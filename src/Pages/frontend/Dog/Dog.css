@@ -1,0 +1,47 @@
+.gray-color{
+    color: gray;
+}
+.offer{
+    background-color: orange;
+    padding: 2px 10px;
+    border-radius: 12px;
+    color: white;
+    margin-bottom: 20px;
+}
+.margin{
+    margin-left: 90px;
+}
+.btn{
+    background-color: #32b67a;
+    border: 1px solid #32b67a;
+}
+/* .half-width img{
+    width: 556.01px;
+    height: 438px;
+    float:right;
+    margin-right: 96.99px;
+    margin-top:135px;
+    transform: width 5s, height 5s, transform 5s;
+}
+.half-width img:hover{
+    width:200px;
+    height:200px;
+    transform: translateY(20px);
+   
+} */
+.inner{
+    overflow: hidden;
+}
+.half-width img{
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+}
+.half-width img{
+    transform: scale(1);
+    transition: 0.3s ease-in-out;
+}
+.half-width img:hover{
+    transform: scale(1.5);
+}
