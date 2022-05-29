@@ -1,0 +1,20 @@
+.form-center{
+justify-content: center;
+align-items: center;
+}
+.text-decoration{
+    text-decoration: none;
+    color: black;
+}
+.shadow-padding{
+    padding: 50px;
+}
+.border-form{
+    border: 1px solid #32b67a;
+}
+.cancle-btn{
+    border: 1px solid red;
+    color: red;
+    display: inline;
+    padding: 2px 6px;
+}
