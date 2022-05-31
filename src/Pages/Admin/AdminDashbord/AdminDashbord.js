@@ -76,13 +76,14 @@ const AdminDashbord = () => {
                         </>
                     ) : (
                         <>
-                            <MenuItem icon={<BsFillCartFill />}> <Link activeStyle={activeStyle} to={`admin/users`}>Manage User</Link></MenuItem>
-                            <MenuItem icon={<BsFillCartFill />}> <Link activeStyle={activeStyle} to={`admin/make-admin`}>Make Admin</Link></MenuItem>
-                            <MenuItem icon={<BsFillCartFill />}> <Link activeStyle={activeStyle} to={`admin/make-teacher`}>Make Teacher</Link></MenuItem>
-                            <MenuItem icon={<FaUserTie />}> <Link activeStyle={activeStyle} to={`admin/add-tutor`}>Add Tutor</Link></MenuItem>
+                            {/* <MenuItem icon={<BsFillCartFill />}> <Link activeStyle={activeStyle} to={`admin/users`}>Manage User</Link></MenuItem> */}
+                            <MenuItem icon={<BsFillCartFill />}><Link activeStyle={activeStyle} to={`/admin/admin/makeAdmin`}>Make Admin</Link></MenuItem>
+                            <MenuItem icon={<FaUserTie />}> <Link activeStyle={activeStyle} to={`/admin/admin/addService`}>Add Service</Link></MenuItem>
+                            {/* 
+                         
                             <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor-ads`}>Manage Tutor Request</Link></MenuItem>
                             <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor-books`}>Manage Tutor Books</Link></MenuItem>
-                            <MenuItem icon={<BsFillGearFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor`}>Manage Tutor</Link></MenuItem>
+                            <MenuItem icon={<BsFillGearFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor`}>Manage Tutor</Link></MenuItem> */}
                         </>
                     )
                 }

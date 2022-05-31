@@ -30,14 +30,14 @@ const Nav = () => {
         <li className="nav-item">
           <Link to="/contact" className="nav-link active mx-5" aria-current="page" href="#">CONTACT</Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link to="/addService" className="nav-link active mx-5" aria-current="page" href="#">ADD SERVICE</Link>
-        </li>
+        </li> */}
         <li className="nav-item">
           <Link to="/pay" className="nav-link active mx-5" aria-current="page" href="#">Pay</Link>
         </li>
         <li className="nav-item">
-          <Link to="/adminDashbord" className="nav-link active mx-5" aria-current="page" href="#">Admin Dashbord</Link>
+          <Link to="/admin" className="nav-link active mx-5" aria-current="page" href="#">Admin Dashbord</Link>
         </li>
         { user?.email? 
         <button className="btn" onClick={logOut}>logOut</button>

@@ -19,6 +19,10 @@ import Register from './Pages/frontend/Register/Register';
 import AuthProvider from './Pages/Context/AuthProvider';
 import PrivateRoute from './Pages/Context/PrivateRoute/PrivateRoute';
 import AdminDashbord from './Pages/Admin/AdminDashbord/AdminDashbord';
+import MakeAdmin from './Pages/Admin/MakeAdmin/MakeAdmin';
+import AdminRoute from './Pages/frontend/Login/AdminRoute/AdminRoute';
+// import AdminDashbord from './Pages/Admin/';
+
 
 
 function App() {
@@ -36,11 +40,34 @@ function App() {
          <Route path="/details/:_id" element={<Details/>}></Route>
          <Route path="/about" element={<About/>}></Route>
          <Route path="/contact" element={<Contact/>}></Route>
-         <Route path="/addService" element={<PrivateRoute><AddService/></PrivateRoute>}></Route>
          <Route path="/pay" element={<PrivateRoute><Pay/></PrivateRoute>}></Route>
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/register" element={<Register/>}></Route>
-         <Route path="/adminDashbord" element={<AdminDashbord/>}></Route>
+                         {/* ADMIN */}
+          <Route path="/admin" element={<AdminDashbord/>}></Route>
+          <Route path="/admin/admin/makeAdmin" element={<MakeAdmin/>}></Route>
+          <Route path="/admin/admin/addService" element={<AddService/>}></Route>
+         
+
+{/* <Route path="/" element={<AdminRoute><AdminDashboard /></AdminRoute>}>
+              <Route exact path="/admin" element={<AdminRoute><AllUsers /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/users`} element={<AdminRoute><AllUsers /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/make-admin`} element={<AdminRoute><MakeAdmin /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/make-teacher`} element={<AdminRoute><MakeTeacher /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/add-tutor`} element={<AdminRoute><AddTutor /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/manage-tutor`} element={<AdminRoute><ManageTutor /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/manage-tutor-ads`} element={<AdminRoute><ManageTutorAds /></AdminRoute>}>
+              </Route>
+              <Route path={`admin/manage-tutor-books`} element={<AdminRoute><ManageTutorBooks /></AdminRoute>}>
+              </Route>
+            </Route> */}
+
          <Route path="*" element={<NotFound/>}></Route>
        </Routes>
 
