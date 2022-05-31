@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import SingleHome from '../SingleHome/SingleHome';
 import { Row } from 'react-bootstrap'
+import Logo from '../Logo/Logo';
 
 const Home = () => {
   const [homes, setHome] = useState([]);
@@ -15,6 +16,7 @@ const Home = () => {
 }, [])
 
   return <div>
+        <Logo/>
         <h2 className="text-center my-5">Blogs</h2>
         <Row xs={1} md={2} className="g-4 single-product mx-auto margin-btm">
             {

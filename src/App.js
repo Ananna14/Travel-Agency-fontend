@@ -16,13 +16,16 @@ import AddService from './Pages/frontend/AddService/AddService';
 import Pay from './Pages/Pay/Pay';
 import Login from './Pages/frontend/Login/Login';
 import Register from './Pages/frontend/Register/Register';
+import AuthProvider from './Pages/Context/AuthProvider';
+import PrivateRoute from './Pages/Context/PrivateRoute/PrivateRoute';
+import AdminDashbord from './Pages/Admin/AdminDashbord/AdminDashbord';
 
 
 function App() {
   return (
     <div className="App">
+     <AuthProvider>
      <BrowserRouter>
-     <Logo/>
        <Nav/>
        <Routes>
          <Route path="/" element={<Home/>}></Route>
@@ -33,15 +36,17 @@ function App() {
          <Route path="/details/:_id" element={<Details/>}></Route>
          <Route path="/about" element={<About/>}></Route>
          <Route path="/contact" element={<Contact/>}></Route>
-         <Route path="/addService" element={<AddService/>}></Route>
-         <Route path="/pay" element={<Pay/>}></Route>
+         <Route path="/addService" element={<PrivateRoute><AddService/></PrivateRoute>}></Route>
+         <Route path="/pay" element={<PrivateRoute><Pay/></PrivateRoute>}></Route>
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/register" element={<Register/>}></Route>
+         <Route path="/adminDashbord" element={<AdminDashbord/>}></Route>
          <Route path="*" element={<NotFound/>}></Route>
        </Routes>
 
        <Footer/>
      </BrowserRouter>
+     </AuthProvider>
     
     </div>
   );
