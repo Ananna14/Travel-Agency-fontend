@@ -29,15 +29,17 @@ const Login = () => {
     <div className='margin-btm'>
          <h2 className="py-5">Login Page</h2>
          {/* spiner-user-success-error */}
-         {isLoading && <div class="spinner-border text-danger" role="status">
+     
+         {isLoading && <div class="spinner-border text-danger text-center" role="status">
                         <span class="visually-hidden">Loading...</span>
                         </div>}
                         {user?.email && <div class="alert alert-success w-50" role="alert">
                         User Login Successfully!
                             </div>}
-                            {authError && <div class="alert alert-danger w-50" role="alert">
+                            <p className="text-center text-danger">{authError}</p>
+                            {/* {authError && <div class="alert alert-danger w-50" role="alert">
                             {authError}
-                            </div>}
+                            </div>} */}
        <Container className="shadow-lg py-5 rounded" style={{ minWidth: 445, maxWidth: 580, mx: 'auto' }}>
             <Form onSubmit={handleLoginSubmit}>
            <Form.Group as={Row} className="mb-3 form-center" controlId="formPlaintextEmail" >

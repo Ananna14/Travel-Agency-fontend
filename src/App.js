@@ -9,7 +9,6 @@ import About from './Pages/frontend/About/About';
 import Contact from './Pages/frontend/Contact/Contact';
 import NotFound from './Pages/frontend/NotFound/NotFound';
 import Nav from './Pages/frontend/Nav/Nav';
-import Logo from './Pages/frontend/Logo/Logo';
 import Footer from './Pages/frontend/Footer/Footer';
 import Details from './Pages/frontend/Details/Details';
 import AddService from './Pages/frontend/AddService/AddService';
@@ -49,10 +48,9 @@ function App() {
           <Route path="/admin/admin/addService" element={<AddService/>}></Route>
          
 
-{/* <Route path="/" element={<AdminRoute><AdminDashboard /></AdminRoute>}>
-              <Route exact path="/admin" element={<AdminRoute><AllUsers /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/users`} element={<AdminRoute><AllUsers /></AdminRoute>}>
+  {/* Admin*/}
+  {/* <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>}>
+              <Route exact path="/admin" element={<AdminRoute><MakeAdmin /></AdminRoute>}>
               </Route>
               <Route path={`admin/make-admin`} element={<AdminRoute><MakeAdmin /></AdminRoute>}>
               </Route>
@@ -67,6 +65,7 @@ function App() {
               <Route path={`admin/manage-tutor-books`} element={<AdminRoute><ManageTutorBooks /></AdminRoute>}>
               </Route>
             </Route> */}
+
 
          <Route path="*" element={<NotFound/>}></Route>
        </Routes>

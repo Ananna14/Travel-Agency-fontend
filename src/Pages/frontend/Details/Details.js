@@ -3,11 +3,13 @@ import { Card } from 'react-bootstrap';
 import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
+import useAuth from '../../hooks/useAuth';
 
 const Details = () => {
     const {_id} = useParams();
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
     const [singleService, setSingleService] = useState({});
+    const { user } = useAuth();
 
     useEffect(()=>{
         fetch(`http://localhost:5000/services/${_id}`)
@@ -16,15 +18,44 @@ const Details = () => {
     },[])
     // console.log(singleService);
 
-    //FORM_DETAILS_ADDED
-    const onSubmit = data => {
-        console.log(data)
+    //FORM_DETAILS_ADDED_booking
+    const onSubmit = (_id) => {
+        const orderDetails = {
+            orderId: _id,
+            name: user.displayName,
+            email: user.email,
+            img: singleService.img,
+            // status: 'Pending',
+            serviceName: singleService.Title,
+            Description: singleService.Description,
+            price: singleService.price
+        }
+        // console.log(orderDetails);
+        // SEND_TO_THE_SERVER
+        fetch(`http://localhost:5000/booking`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(orderDetails)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.insertedId) {
+                    reset();
+                    alert('Order Successful');
+                    // history.push('/products');
+                }
+            });
+      
     };
 
   return (
-    <div style={{display: "flex"}}>
-        <div className='col-lg-4'>
-            <Card className="card shadow half-width m-4 pb-5 pl-2">
+    <div className="container">
+       <div className="row">
+       <div className='col-lg-6 col-sm-12'>
+            <Card className="card shadow half-width m-5 pl-2">
                 <div className="inner">
                     <Card.Img variant="top" className='img-design mx-auto' src={singleService.Image} />
                 </div>
@@ -47,27 +78,26 @@ const Details = () => {
                     </div>
                     <Link to="/home"><button className='btn w-100 mt-5'>Back</button></Link><br/><br/>
                         <hr/><br/>
-                    <div className="text-start">
+                    <div className="text-start py-5">
                     <span className='gray-color fw-bold'>Available through out the year:</span><br/>
                         <small class="card-text gray-color">{singleService.Description}</small>
                     </div>
                 </Card.Body>
             </Card>
         </div>
-        {/* FORM */}
-        <div className="form-details col-lg-8">
-        <form onSubmit={handleSubmit(onSubmit)} className='mt-5 mb-2 '>
-                    <input {...register("Heading")} placeholder='Heading' className='mb-2 w-50 p-2 border-color'  /><br/>
-                    <textarea {...register("Description")} placeholder='Description' className='mb-2 w-50 p-2 border-color' /><br/>
-                    <input {...register("Due")} placeholder='Due' className='mb-2 w-50 p-2 border-color'  /><br/>
-                    <input {...register("Heading")} placeholder='Heading' className='mb-2 w-50 p-2 border-color'  /><br/>
-                    <input {...register("Day")} placeholder='Day' className='mb-2 w-50 p-2 border-color'  /><br/>
-                    <input {...register("Image")} placeholder='Image' className='mb-2 w-50 p-2 border-color'  /><br/>
+            {/* FORM */}
+            <div className="form-details col-lg-6 col-sm-12 py-5">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <input {...register("User-Name")} placeholder='User-Name' className='mb-2 w-100 p-2 border-color' defaultValue={user.displayName} /><br/>
+                    <input {...register("Usr-Email")} placeholder='Usr-Email' className='mb-2 w-100 p-2 border-color' defaultValue={user.email} /><br/>
+                    <input {...register("Phone-Number")} placeholder='Phone-Number' className='mb-2 w-100 p-2 border-color'  /><br/>
+                    <textarea {...register("Description")} placeholder='Write you Something__________________' className='mb-2 w-100 p-2 border-color' /><br/>
                    
-                   
-                    <input type="submit" className='border-color bg'/><br/>
+                    <button onClick={() => onSubmit(singleService._id)} className='btn mt-4 px-5'>Back</button>
+                    {/* <input onClick={() => onSubmit(singleService._id)} type="Book" className='btn' style={{color:"dark"}}/><br/> */}
                 </form>
-        </div>
+            </div>
+       </div>
     </div>
   )
 }

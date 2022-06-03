@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithPopup } from "firebase/auth";
 import { app } from '../../../src/Firebase/firebase.config';
+import axios from 'axios';
+import { jsonEval } from '@firebase/util';
 // import initializeAuthentication from '../../Firebase/firebase.init';
 
 
@@ -14,13 +16,25 @@ const useFirebase = () => {
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
 
-  const resisterUser = (email, password, location) =>{
+  const resisterUser = (email, password, name, navigate, location) =>{
     setIsLoading(true);
      createUserWithEmailAndPassword(auth, email, password)
      .then((userCredential) => {
+      setAuthError('');
+      const newUser = {email, displayName: name};
+      setUser(newUser);
+      //save user to database
+      saveUser(email, name, 'POST');
+      updateProfile(auth.currentUser, {
+        displayName: name
+    }).then(() => {
+    }).catch((error) => {
+      setAuthError(error.message);
+      console.log(error);
+    });
+    navigate('/');
       // const destination = location?.state?.from || '/';
       // navigate(destination);
-      setAuthError('');
     })
     .catch((error) => {
       setAuthError(error.message);
@@ -34,11 +48,13 @@ const useFirebase = () => {
   setIsLoading(true);
   signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
+    // setUser(userCredential.user);
+        // redirect-location-history-end
       // redirect-location-history-start
       const destination = location?.state?.from || '/';
       navigate(destination);
-        // redirect-location-history-end
-    setAuthError('');
+      setAuthError('');
+    
   })
   .catch((error) => {
     setAuthError(error.message);
@@ -47,25 +63,30 @@ const useFirebase = () => {
 }
 
 const signInWithGoogle = (location, navigate) =>{
+  setIsLoading(true);
   signInWithPopup(auth, googleProvider)
   .then((result) => {
-     setUser(result.user);
-     setAuthError('');
-
+    //  setUser(result.user);
+    const user = result.user;
      //save user to database
-    //  saveUser(result.user.email, result.user.displayName, 'PUT');
+     saveUser(user.email, user.displayName, 'PUT');
 
      const destination = location?.state?.from || '/';
-     navigate.replace(destination);
-  }).catch((error) => setAuthError(error))
-  .finally(setIsLoading(false));
+     navigate(destination);
+     setAuthError('');
+  }).catch((error) => {
+    setAuthError(error.message);
+  })
+  .finally(()=>setIsLoading(false));
 }
 
+//observer user state
 useEffect(()=>{
   const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         const uid = user.uid;
         setUser(user);
+        setAuthError("");
         // ...
       } else {
         setUser({})
@@ -85,6 +106,14 @@ useEffect(()=>{
     .finally(()=> setIsLoading(false));
     
   }
+const saveUser = (email, displayName, method) => {
+  const user = { email, displayName };
+  axios({
+    method: method,
+    url: "http://localhost:5000/users",
+    data: user
+  });
+}
 
 return{
   user,

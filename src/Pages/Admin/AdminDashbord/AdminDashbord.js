@@ -19,6 +19,7 @@ import {
     BsFillCartFill, BsFillInboxesFill, BsFillGearFill
 } from "react-icons/bs";
 import { Button, Container, Navbar } from 'react-bootstrap';
+import './AdminDashbord.css'
 
 const AdminDashbord = () => {
     const [collapsed, setCollapsed] = useState(false);
