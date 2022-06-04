@@ -20,6 +20,7 @@ import PrivateRoute from './Pages/Context/PrivateRoute/PrivateRoute';
 import AdminDashbord from './Pages/Admin/AdminDashbord/AdminDashbord';
 import MakeAdmin from './Pages/Admin/MakeAdmin/MakeAdmin';
 import AdminRoute from './Pages/frontend/Login/AdminRoute/AdminRoute';
+import MyOrder from './Pages/frontend/MyOrder/MyOrder';
 // import AdminDashbord from './Pages/Admin/';
 
 
@@ -36,12 +37,13 @@ function App() {
          <Route path="/dog" element={<Dog/>}></Route>
          <Route path="/child" element={<Child/>}></Route>
          <Route path="/type" element={<Type/>}></Route>
-         <Route path="/details/:_id" element={<Details/>}></Route>
+         <Route path="/details/:_id" element={<PrivateRoute><Details/></PrivateRoute>}></Route>
          <Route path="/about" element={<About/>}></Route>
          <Route path="/contact" element={<Contact/>}></Route>
          <Route path="/pay" element={<PrivateRoute><Pay/></PrivateRoute>}></Route>
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/register" element={<Register/>}></Route>
+         <Route path="/myOrder" element={<MyOrder/>}></Route>
                          {/* ADMIN */}
           <Route path="/admin" element={<AdminDashbord/>}></Route>
           <Route path="/admin/admin/makeAdmin" element={<MakeAdmin/>}></Route>

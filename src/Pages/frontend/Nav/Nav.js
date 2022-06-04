@@ -30,9 +30,9 @@ const Nav = () => {
         <li className="nav-item">
           <Link to="/contact" className="nav-link active mx-5" aria-current="page" href="#">CONTACT</Link>
         </li>
-        {/* <li className="nav-item">
-          <Link to="/addService" className="nav-link active mx-5" aria-current="page" href="#">ADD SERVICE</Link>
-        </li> */}
+        <li className="nav-item">
+          <Link to="/myOrder" className="nav-link active mx-5" aria-current="page" href="#">My Order</Link>
+        </li>
         <li className="nav-item">
           <Link to="/pay" className="nav-link active mx-5" aria-current="page" href="#">Pay</Link>
         </li>

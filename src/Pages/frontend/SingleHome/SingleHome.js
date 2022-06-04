@@ -23,7 +23,7 @@ const SingleHome = ({ home }) => {
                   {/* part-2-start */}
                     <div className='margin'>
                       <span className='offer'> 24% off</span><br/><br/>
-                      <h3 className='fw-bold'>{Due}</h3>
+                      <h3 className='fw-bold'>${Due}</h3>
                     </div>
                       {/* part-2-end */}
                 </div>

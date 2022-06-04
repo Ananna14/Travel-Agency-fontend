@@ -7,7 +7,7 @@ import useAuth from '../../hooks/useAuth';
 
 const Register = () => {
   const [registrationData, setRegistrationData] = useState({});
-  const { user, resisterUser, isLoading, authError, signInWithGoogle } = useAuth();
+  const { user, resisterUser, isLoading, authError, signInWithGoogle, reset } = useAuth();
 
   const location = useLocation();
   const history = useNavigate();
@@ -25,6 +25,7 @@ const Register = () => {
   const handleRegistrationSubmit = (e) => {
     e.preventDefault();
    if(registrationData.password !== registrationData.confirmPassword){
+     reset();
      alert('Password did not match');
      return;
    }

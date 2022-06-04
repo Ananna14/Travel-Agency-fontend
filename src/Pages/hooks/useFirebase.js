@@ -3,11 +3,8 @@ import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithPopup } from "firebase/auth";
 import { app } from '../../../src/Firebase/firebase.config';
 import axios from 'axios';
-import { jsonEval } from '@firebase/util';
-// import initializeAuthentication from '../../Firebase/firebase.init';
 
 
-// initializeAuthentication()
 const useFirebase = () => {
   const[user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -32,9 +29,9 @@ const useFirebase = () => {
       setAuthError(error.message);
       console.log(error);
     });
-    navigate('/');
-      // const destination = location?.state?.from || '/';
-      // navigate(destination);
+    // navigate('/');
+      const destination = location?.state?.from || '/';
+      navigate(destination);
     })
     .catch((error) => {
       setAuthError(error.message);
@@ -42,7 +39,7 @@ const useFirebase = () => {
     })
     .finally(() => setIsLoading(false));
   }
-  //
+
  // redirect-location-history
  const loginUser = (email, password, location, navigate)=>{
   setIsLoading(true);

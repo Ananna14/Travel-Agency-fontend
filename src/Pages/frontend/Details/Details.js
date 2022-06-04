@@ -24,13 +24,15 @@ const Details = () => {
             orderId: _id,
             name: user.displayName,
             email: user.email,
-            img: singleService.img,
+            img: singleService.Image,
+            Due: singleService.Due,
+            Heading: singleService.Heading,
+            // number: singleService?.mobile,
+            // message: singleService?.message,
             // status: 'Pending',
-            serviceName: singleService.Title,
-            Description: singleService.Description,
-            price: singleService.price
+    
         }
-        // console.log(orderDetails);
+        console.log(orderDetails);
         // SEND_TO_THE_SERVER
         fetch(`http://localhost:5000/booking`, {
             method: 'POST',
@@ -48,7 +50,7 @@ const Details = () => {
                     // history.push('/products');
                 }
             });
-      
+    //   console.log(data);
     };
 
   return (
@@ -72,7 +74,7 @@ const Details = () => {
                         {/* part-2-start */}
                         <div className='margin'>
                             <span className='offer'> 24% off</span><br/><br/>
-                            <h3 className='fw-bold'>{singleService.Due}</h3>
+                            <h3 className='fw-bold'>${singleService.Due}</h3>
                         </div>
                             {/* part-2-end */}
                     </div>
@@ -88,12 +90,14 @@ const Details = () => {
             {/* FORM */}
             <div className="form-details col-lg-6 col-sm-12 py-5">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("User-Name")} placeholder='User-Name' className='mb-2 w-100 p-2 border-color' defaultValue={user.displayName} /><br/>
+                    <input {...register("User-Name")} placeholder='User-Name' className='mb-2 w-100 p-2 border-color' defaultValue={user?.displayName} /><br/>
                     <input {...register("Usr-Email")} placeholder='Usr-Email' className='mb-2 w-100 p-2 border-color' defaultValue={user.email} /><br/>
-                    <input {...register("Phone-Number")} placeholder='Phone-Number' className='mb-2 w-100 p-2 border-color'  /><br/>
-                    <textarea {...register("Description")} placeholder='Write you Something__________________' className='mb-2 w-100 p-2 border-color' /><br/>
+                    <input {...register("Phone-Number")} placeholder='Phone-Number' 
+                    type ="number"  className='mb-2 w-100 p-2 border-color'  /><br/>
+                    <textarea {...register("Message")} placeholder='Write you Something__________________'
+                    type="message" className='mb-2 w-100 p-2 border-color' /><br/>
                    
-                    <button onClick={() => onSubmit(singleService._id)} className='btn mt-4 px-5'>Back</button>
+                    <button className='btn mt-4 px-5'>Book</button>
                     {/* <input onClick={() => onSubmit(singleService._id)} type="Book" className='btn' style={{color:"dark"}}/><br/> */}
                 </form>
             </div>
