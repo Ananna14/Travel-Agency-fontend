@@ -15,7 +15,6 @@ const AddService = () => {
     };
   return (
     <div>
-      <AdminDashbord/>
      <Container>
          <form onSubmit={handleSubmit(onSubmit)} className='mt-5 mb-2 mx-auto shadow-lg p-5' style={{ maxWidth: '600px' }}>
                     <input {...register("Heading")} placeholder='Heading' className='mb-2 w-50 p-2 border-color'  /><br/>

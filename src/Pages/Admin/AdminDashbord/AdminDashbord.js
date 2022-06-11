@@ -78,13 +78,13 @@ const AdminDashbord = () => {
                     ) : (
                         <>
                             {/* <MenuItem icon={<BsFillCartFill />}> <Link activeStyle={activeStyle} to={`admin/users`}>Manage User</Link></MenuItem> */}
-                            <MenuItem icon={<BsFillCartFill />}><Link activeStyle={activeStyle} to={`/admin/admin/makeAdmin`}>Make Admin</Link></MenuItem>
-                            <MenuItem icon={<FaUserTie />}> <Link activeStyle={activeStyle} to={`/admin/admin/addService`}>Add Service</Link></MenuItem>
-                            {/* 
+                            <MenuItem icon={<BsFillCartFill />}><Link activeStyle={activeStyle} to={`makeAdmin`}>Make Admin</Link></MenuItem>
+                            <MenuItem icon={<FaUserTie />}> <Link activeStyle={activeStyle} to={`addService`}>Add Service</Link></MenuItem>
+                            
                          
-                            <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor-ads`}>Manage Tutor Request</Link></MenuItem>
-                            <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor-books`}>Manage Tutor Books</Link></MenuItem>
-                            <MenuItem icon={<BsFillGearFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor`}>Manage Tutor</Link></MenuItem> */}
+                            {/* <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor-ads`}>Manage Tutor Request</Link></MenuItem> */}
+                            <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`manage-travel-books`}>Manage travel Books</Link></MenuItem>
+                            <MenuItem icon={<BsFillGearFill />}> <Link activeStyle={activeStyle} to={`manage-travel`}>Manage Travel</Link></MenuItem>
                         </>
                     )
                 }
@@ -107,7 +107,6 @@ const AdminDashbord = () => {
     </ProSidebar>
 
 
-    {/* main */}
     <main style={{ width: '100%' }}>
         <Navbar bg="dark" variant="dark">
             <Container>
@@ -121,7 +120,7 @@ const AdminDashbord = () => {
                 </Navbar.Brand>
             </Container>
         </Navbar>
-        <section className="p-4" style={{ minHeight: '90vh' }}>
+        <section className="p-4" >
             <Outlet></Outlet>
         </section>
     </main>

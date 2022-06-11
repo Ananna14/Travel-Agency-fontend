@@ -17,11 +17,13 @@ import Login from './Pages/frontend/Login/Login';
 import Register from './Pages/frontend/Register/Register';
 import AuthProvider from './Pages/Context/AuthProvider';
 import PrivateRoute from './Pages/Context/PrivateRoute/PrivateRoute';
-import AdminDashbord from './Pages/Admin/AdminDashbord/AdminDashbord';
 import MakeAdmin from './Pages/Admin/MakeAdmin/MakeAdmin';
-import AdminRoute from './Pages/frontend/Login/AdminRoute/AdminRoute';
 import MyOrder from './Pages/frontend/MyOrder/MyOrder';
+import AdminDashbord from './Pages/Admin/AdminDashbord/AdminDashbord';
+import ManageBooks from './Pages/Admin/ManageBooks/ManageBooks';
+import ManageTravel from './Pages/Admin/ManageTravel/ManageTravel';
 // import AdminDashbord from './Pages/Admin/';
+
 
 
 
@@ -44,31 +46,13 @@ function App() {
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/register" element={<Register/>}></Route>
          <Route path="/myOrder" element={<MyOrder/>}></Route>
-                         {/* ADMIN */}
-          <Route path="/admin" element={<AdminDashbord/>}></Route>
-          <Route path="/admin/admin/makeAdmin" element={<MakeAdmin/>}></Route>
-          <Route path="/admin/admin/addService" element={<AddService/>}></Route>
-         
-
-  {/* Admin*/}
-  {/* <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>}>
-              <Route exact path="/admin" element={<AdminRoute><MakeAdmin /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/make-admin`} element={<AdminRoute><MakeAdmin /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/make-teacher`} element={<AdminRoute><MakeTeacher /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/add-tutor`} element={<AdminRoute><AddTutor /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/manage-tutor`} element={<AdminRoute><ManageTutor /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/manage-tutor-ads`} element={<AdminRoute><ManageTutorAds /></AdminRoute>}>
-              </Route>
-              <Route path={`admin/manage-tutor-books`} element={<AdminRoute><ManageTutorBooks /></AdminRoute>}>
-              </Route>
-            </Route> */}
-
-
+          {/* ADMIN */}
+         <Route path="/admin/" element={<PrivateRoute><AdminDashbord/></PrivateRoute>}>
+          <Route path="makeAdmin" element={<MakeAdmin/>}/>
+          <Route path="addService" element={<AddService/>}/>
+          <Route path="manage-travel-books" element={<ManageBooks/>}/>
+          <Route path="manage-travel" element={<ManageTravel/>}/>
+         </Route>
          <Route path="*" element={<NotFound/>}></Route>
        </Routes>
 

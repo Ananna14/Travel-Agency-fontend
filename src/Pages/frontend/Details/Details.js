@@ -18,40 +18,21 @@ const Details = () => {
     },[])
     // console.log(singleService);
 
+
     //FORM_DETAILS_ADDED_booking
-    const onSubmit = (_id) => {
-        const orderDetails = {
-            orderId: _id,
-            name: user.displayName,
-            email: user.email,
-            img: singleService.Image,
-            Due: singleService.Due,
-            Heading: singleService.Heading,
-            // number: singleService?.mobile,
-            // message: singleService?.message,
-            // status: 'Pending',
-    
-        }
-        console.log(orderDetails);
-        // SEND_TO_THE_SERVER
-        fetch(`http://localhost:5000/booking`, {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(orderDetails)
+    const onSubmit = data => {
+
+        data.email = user.email;
+        console.log(data);
+        fetch("http://localhost:5000/confirmOrder",{
+            method: "POST",
+            headers: {"content-type": "application/json"},
+            body: JSON.stringify(data),
         })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if (data.insertedId) {
-                    reset();
-                    alert('Order Successful');
-                    // history.push('/products');
-                }
-            });
-    //   console.log(data);
-    };
+        .then((res)=>res.json())
+        .then((result)=>console.log(result))
+      
+        }
 
   return (
     <div className="container">
@@ -90,15 +71,16 @@ const Details = () => {
             {/* FORM */}
             <div className="form-details col-lg-6 col-sm-12 py-5">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input {...register("User-Name")} placeholder='User-Name' className='mb-2 w-100 p-2 border-color' defaultValue={user?.displayName} /><br/>
-                    <input {...register("Usr-Email")} placeholder='Usr-Email' className='mb-2 w-100 p-2 border-color' defaultValue={user.email} /><br/>
+                <input {...register("heading", { required: true })} placeholder='heading' className='mb-2 w-100 p-2 border-color' defaultValue={singleService.Heading} /><br/>  
+                    <input {...register("img", { required: true })} placeholder='img-url' defaultValue={singleService.Image} 
+                      className='mb-2 w-100 p-2 border-color'  /><br/>
+                    <input {...register("price", { required: true })} placeholder='Due' className='mb-2 w-100 p-2 border-color' defaultValue={singleService.Due} /><br/>
+                    <input {...register("date")} type="date" placeholder='Date' className='mb-2 w-100 p-2 border-color'  /><br/>
                     <input {...register("Phone-Number")} placeholder='Phone-Number' 
                     type ="number"  className='mb-2 w-100 p-2 border-color'  /><br/>
                     <textarea {...register("Message")} placeholder='Write you Something__________________'
                     type="message" className='mb-2 w-100 p-2 border-color' /><br/>
-                   
-                    <button className='btn mt-4 px-5'>Book</button>
-                    {/* <input onClick={() => onSubmit(singleService._id)} type="Book" className='btn' style={{color:"dark"}}/><br/> */}
+                    <input type="submit" />
                 </form>
             </div>
        </div>

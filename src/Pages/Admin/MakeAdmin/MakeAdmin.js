@@ -5,8 +5,7 @@ import AdminDashbord from '../AdminDashbord/AdminDashbord';
 const MakeAdmin = () => {
  
   return (
-    <div className="margin-btm mt-5">
-     {/* <AdminDashbord/> */}
+    <div className="margin-btm">
        <div>
             <Container>
                     <div className="mx-auto shadow-lg p-5" style={{ maxWidth: '600px' }}>
