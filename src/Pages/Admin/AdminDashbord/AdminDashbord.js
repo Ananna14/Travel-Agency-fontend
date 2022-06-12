@@ -20,12 +20,14 @@ import {
 } from "react-icons/bs";
 import { Button, Container, Navbar } from 'react-bootstrap';
 import './AdminDashbord.css'
+import useAuth from '../../hooks/useAuth';
 
 const AdminDashbord = () => {
+    const {admin} = useAuth();
     const [collapsed, setCollapsed] = useState(false);
     const [toggled, setToggled] = useState(false);
 
-    const admin = 1;
+    // const admin = 1;
     const activeStyle = {
         fontWeight: "bold",
         color: "#A48484",

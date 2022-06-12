@@ -8,17 +8,26 @@ const MyOrder = () => {
   const{_id} = useParams();
   const {user} = useAuth();
 
-  const [bookings, setBookings] = useState([]);
+  const [bookings, setBookings] = useState(null);
 
     // SINGLE_USER_SERVICE_LOAD
     useEffect( ()=>{
       // const url = (`https://morning-lowlands-93777.herokuapp.com/booking?email=${user.email}`)
-      const url = `http://localhost:5000/myOrders?email=${user.email}`
+      if(user.email){
+        const url = `http://localhost:5000/myOrders?email=${user.email}`
       fetch (url)
       .then(res => res.json())
-      .then(data => setBookings(data));
-  }, [])
-console.log(bookings);
+      // .then(data => setBookings(data));
+      .then(data =>{
+         setBookings(data);
+         console.log(data, user)
+      });
+      }
+      else{
+        console.log('user not found')
+      }
+  }, [user])
+// console.log(bookings);
 
 // BTN_DELETED_USER_SERVICE
 const handleDelete = id =>{
@@ -38,6 +47,13 @@ const handleDelete = id =>{
   })
 }
 
+if(!bookings){
+  return  <div class="spinner-border text-danger text-center" role="status">
+  <span class="visually-hidden">Loading...</span>
+  </div>
+
+  
+}
   return (
     <div className="margin-btm py-5">
           <marquee><h1 className="my-5 pink-color">WELCOME MY ORDERS PAGE</h1></marquee>

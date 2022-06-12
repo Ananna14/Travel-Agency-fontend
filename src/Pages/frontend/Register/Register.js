@@ -33,7 +33,7 @@ const Register = () => {
 }
 
   return (
-    <div className='margin-btm'>
+    <div className='margin-btm container'>
        <Container>
        <h2 className="py-5">Resister</h2>
          {/* success-msg and error-alert */}
