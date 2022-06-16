@@ -15,8 +15,8 @@ const SingleHome = ({ home }) => {
           <div className='d-flex mt-5'>
                   {/* part-1-start */}
                     <div className=''>
-                     <p> <i class="fas fa-map-marker-alt mx-2"></i>{Area}<br/></p>
-                     <p> <i class="far fa-clock mx-2"></i><span>{Day}<br/>Days Nights</span></p>
+                     <p> <i className="fas fa-map-marker-alt mx-2"></i>{Area}<br/></p>
+                     <p> <i className="far fa-clock mx-2"></i><span>{Day}<br/>Days Nights</span></p>
                     </div>
                   
                       {/* part-1-end */}
@@ -31,7 +31,7 @@ const SingleHome = ({ home }) => {
                 <hr/><br/>
                <div className="text-start">
                <span className='gray-color fw-bold'>Available through out the year:</span><br/>
-                <small class="card-text gray-color">{Description}</small>
+                <small className="card-text gray-color">{Description}</small>
                </div>
         </Card.Body>
       </Card>

@@ -8,7 +8,6 @@ import {
     ProSidebar,
     Menu,
     MenuItem,
-    SubMenu,
     SidebarHeader,
     SidebarFooter,
     SidebarContent,
@@ -19,7 +18,6 @@ import {
     BsFillCartFill, BsFillInboxesFill, BsFillGearFill
 } from "react-icons/bs";
 import { Button, Container, Navbar } from 'react-bootstrap';
-import './AdminDashbord.css'
 import useAuth from '../../hooks/useAuth';
 
 const AdminDashbord = () => {
@@ -28,10 +26,10 @@ const AdminDashbord = () => {
     const [toggled, setToggled] = useState(false);
 
     // const admin = 1;
-    const activeStyle = {
-        fontWeight: "bold",
-        color: "#A48484",
-    }
+    // const activeStyle = {
+    //     fontWeight: "bold",
+    //     color: "#A48484",
+    // }
 
     const handleCollapsedChange = (checked) => {
         setCollapsed(checked);
@@ -69,7 +67,7 @@ const AdminDashbord = () => {
         <SidebarContent>
             <Menu iconShape="circle">
 
-                <MenuItem icon={<BsFillHouseFill />}> <NavLink activeStyle={activeStyle} to={'/home'}>Home</NavLink></MenuItem>
+                <MenuItem icon={<BsFillHouseFill />}> <NavLink to={'/home'}>Home</NavLink></MenuItem>
                 {!admin ?
                     (
                         <>
@@ -80,13 +78,13 @@ const AdminDashbord = () => {
                     ) : (
                         <>
                             {/* <MenuItem icon={<BsFillCartFill />}> <Link activeStyle={activeStyle} to={`admin/users`}>Manage User</Link></MenuItem> */}
-                            <MenuItem icon={<BsFillCartFill />}><Link activeStyle={activeStyle} to={`makeAdmin`}>Make Admin</Link></MenuItem>
-                            <MenuItem icon={<FaUserTie />}> <Link activeStyle={activeStyle} to={`addService`}>Add Service</Link></MenuItem>
+                            <MenuItem icon={<BsFillCartFill />}><Link to={`makeAdmin`}>Make Admin</Link></MenuItem>
+                            <MenuItem icon={<FaUserTie />}><Link to={`addService`}>Add Service</Link></MenuItem>
                             
                          
                             {/* <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`admin/manage-tutor-ads`}>Manage Tutor Request</Link></MenuItem> */}
-                            <MenuItem icon={<BsFillInboxesFill />}> <Link activeStyle={activeStyle} to={`manage-travel-books`}>Manage travel Books</Link></MenuItem>
-                            <MenuItem icon={<BsFillGearFill />}> <Link activeStyle={activeStyle} to={`manage-travel`}>Manage Travel</Link></MenuItem>
+                            <MenuItem icon={<BsFillInboxesFill />}><Link to={`manage-travel-books`}>Manage travel Books</Link></MenuItem>
+                            <MenuItem icon={<BsFillGearFill />}><Link to={`manage-travel`}>Manage Travel</Link></MenuItem>
                         </>
                     )
                 }

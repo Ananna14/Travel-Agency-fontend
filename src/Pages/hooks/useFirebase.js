@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithPopup } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithPopup, getIdToken } from "firebase/auth";
 import { app } from '../../../src/Firebase/firebase.config';
 import axios from 'axios';
 
@@ -10,6 +10,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [authError, setAuthError] = useState('');
   const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState('');
 
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
@@ -84,8 +85,10 @@ useEffect(()=>{
       if (user) {
         const uid = user.uid;
         setUser(user);
-        setAuthError("");
-        // ...
+        getIdToken(user)
+        .then(idToken =>{
+          setToken(idToken);
+        })
       } else {
         setUser({})
       }
@@ -123,6 +126,7 @@ const saveUser = (email, displayName, method) => {
 return{
   user,
   admin,
+  token,
   isLoading,
   authError,
   resisterUser,

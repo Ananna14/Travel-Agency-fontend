@@ -21,7 +21,7 @@ const Home = () => {
         <Row xs={1} md={2} className="g-4 single-product mx-auto margin-btm">
             {
                 homes.map(home=><SingleHome
-                key={home.heading}
+                key={home._id}
                      home={home}
                      ></SingleHome>)
             }

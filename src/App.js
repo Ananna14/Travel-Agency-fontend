@@ -22,6 +22,7 @@ import MyOrder from './Pages/frontend/MyOrder/MyOrder';
 import AdminDashbord from './Pages/Admin/AdminDashbord/AdminDashbord';
 import ManageBooks from './Pages/Admin/ManageBooks/ManageBooks';
 import ManageTravel from './Pages/Admin/ManageTravel/ManageTravel';
+import AdminRoute from './Pages/frontend/Login/AdminRoute/AdminRoute';
 // import AdminDashbord from './Pages/Admin/';
 
 
@@ -47,11 +48,11 @@ function App() {
          <Route path="/register" element={<Register/>}></Route>
          <Route path="/myOrder" element={<MyOrder/>}></Route>
           {/* ADMIN */}
-         <Route path="/admin/" element={<PrivateRoute><AdminDashbord/></PrivateRoute>}>
-          <Route path="makeAdmin" element={<MakeAdmin/>}/>
-          <Route path="addService" element={<AddService/>}/>
-          <Route path="manage-travel-books" element={<ManageBooks/>}/>
-          <Route path="manage-travel" element={<ManageTravel/>}/>
+         <Route path="/admin/" element={<PrivateRoute><AdminRoute><AdminDashbord/></AdminRoute></PrivateRoute>}>
+          <Route path="makeAdmin" element={<AdminRoute><MakeAdmin/></AdminRoute>}/>
+          <Route path="addService" element={<AdminRoute><AddService/></AdminRoute>}/>
+          <Route path="manage-travel-books" element={<AdminRoute><ManageBooks/></AdminRoute>}/>
+          <Route path="manage-travel" element={<AdminRoute><ManageTravel/></AdminRoute>}/>
          </Route>
          <Route path="*" element={<NotFound/>}></Route>
        </Routes>

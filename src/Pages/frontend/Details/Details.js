@@ -31,7 +31,9 @@ const Details = () => {
         })
         .then((res)=>res.json())
         .then((result)=>console.log(result))
-      
+        if(data){
+            alert('submited');
+          }
         }
  if(!singleService){
     return <p>loading</p>
@@ -74,7 +76,7 @@ const Details = () => {
             {/* FORM */}
             <div className="form-details col-lg-6 col-sm-12 py-5">
                 <form onSubmit={handleSubmit(onSubmit)}>
-                <input {...register("name", { required: true })} placeholder='heading' className='mb-2 w-100 p-2 border-color' defaultValue={user.displayName} /><br/>  
+                {/* <input {...register("name", { required: true })} placeholder='heading' className='mb-2 w-100 p-2 border-color' defaultValue={user.displayName} /><br/>   */}
                 <input {...register("heading", { required: true })} placeholder='heading' className='mb-2 w-100 p-2 border-color' defaultValue={singleService.Heading} /><br/>  
                     <input {...register("img", { required: true })} placeholder='img-url' defaultValue={singleService.Image} 
                       className='mb-2 w-100 p-2 border-color'  /><br/>

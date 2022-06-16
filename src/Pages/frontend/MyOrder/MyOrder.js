@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
-import { Card } from 'react-bootstrap';
+import { Card, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const MyOrder = () => {
@@ -55,7 +55,8 @@ if(!bookings){
   
 }
   return (
-    <div className="margin-btm py-5">
+   <Container>
+     <div className='py-5'>
           <marquee><h1 className="my-5 pink-color">WELCOME MY ORDERS PAGE</h1></marquee>
           <div className='row'>
            {
@@ -82,6 +83,7 @@ if(!bookings){
 }
            </div>
     </div>
+   </Container>
   )
 }
 
