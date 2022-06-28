@@ -25,6 +25,7 @@ const MakeAdmin = () => {
         .then(res => res.json())
         .then(data =>{
             if(data.modifiedCount){
+               
                 console.log(data);
                 setSuccess(true);
             }
@@ -50,11 +51,11 @@ const MakeAdmin = () => {
                                 Submit
                             </Button>
                         </Form>
-                        {success && <div class="alert alert-success w-50" role="alert">
-                        Make Admin Successfully!
-                            </div>}
                     </div>
                 </Container>
+                {success && <div style={{justifyContent:"center", alignItems:"center" }} class="alert alert-success w-50" role="alert">
+                        Make Admin Successfully!
+                            </div>}
        </div>
      </div>
   )
