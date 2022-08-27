@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
+import Swal from 'sweetalert2';
 
 const Details = () => {
     const {_id} = useParams();
@@ -32,7 +33,11 @@ const Details = () => {
         .then((res)=>res.json())
         .then((result)=>console.log(result))
         if(data){
-            alert('submited');
+            Swal.fire(
+                'Success!',
+                'Order Successfully!',
+                'success'
+              )
           }
         }
  if(!singleService){
@@ -88,7 +93,7 @@ const Details = () => {
                     type ="number"  className='mb-2 w-100 p-2 border-color'  /><br/>
                     <textarea {...register("Message")} placeholder='Write you Something__________________'
                     type="message" className='mb-2 w-100 p-2 border-color' /><br/>
-                    <input type="submit" />
+                    <input className='btn rounded-pill w-100' type="submit" />
                 </form>
             </div>
        </div>

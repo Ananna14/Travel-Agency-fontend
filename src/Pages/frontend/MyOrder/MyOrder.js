@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { Card, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const MyOrder = () => {
   const{_id} = useParams();
@@ -39,7 +40,11 @@ const handleDelete = id =>{
   .then(data => {
     console.log(data)
     if(data.deletedCount){
-      alert('deleted');
+      Swal.fire(
+        'DELETE!',
+        'Delete Successfully!',
+        'success'
+      )
       const remaining = bookings.filter(booking => booking._id !== id);
       setBookings(remaining);
     }
@@ -74,7 +79,7 @@ if(!bookings){
                                 {booking?.Description}
                             </Card.Text>
                             {/* <p className="status-colors">{booking.status}</p> */}
-                            <button className="btn-color" onClick={() => handleDelete(booking._id)}>Delete</button>
+                            <button className="bg-danger text-white px-3 border-0 rounded-pill" onClick={() => handleDelete(booking._id)}>Delete</button>
                             </Card.Body>
                             {/* <Link to={`/admin/admin/pay/${booking._id}`}><button className='btn-color px-5 mb-5'>Pay</button></Link> */}
                         </Card>
