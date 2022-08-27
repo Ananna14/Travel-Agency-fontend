@@ -16,7 +16,7 @@ const Home = () => {
 }, [])
 
   return <div>
-        {/* <Logo/> */}
+        <Logo/>
         <h2 className="text-center my-5">Blogs</h2>
         <Row xs={1} md={2} className="g-4 single-product mx-auto margin-btm">
             {

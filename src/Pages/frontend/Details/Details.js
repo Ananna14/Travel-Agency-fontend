@@ -36,7 +36,9 @@ const Details = () => {
           }
         }
  if(!singleService){
-    return <p>loading</p>
+    return <div class="spinner-border text-danger text-center" role="status">
+    <span class="visually-hidden">Loading...</span>
+    </div>
     
  }
   return (
@@ -45,15 +47,15 @@ const Details = () => {
        <div className='col-lg-6 col-sm-12'>
             <Card className="card shadow half-width m-5 pl-2">
                 <div className="inner">
-                    <Card.Img variant="top" className='img-design mx-auto' src={singleService.Image} />
+                    <Card.Img variant="top" className='img-design mx-auto' src={singleService?.Image} />
                 </div>
                 <Card.Body className="text-center">
-                <Card.Title className="fw-bold mt-3">{singleService.Heading}</Card.Title>
+                <Card.Title className="fw-bold mt-3">{singleService?.Heading}</Card.Title>
                     <div className='d-flex mt-5'>
                         {/* part-1-start */}
                         <div className=''>
                             <p> <i class="fas fa-map-marker-alt mx-2"></i>{singleService.Area}<br/></p>
-                            <p> <i class="far fa-clock mx-2"></i><span>{singleService.Day}<br/>Days Nights</span></p>
+                            <p> <i class="far fa-clock mx-2"></i><span>{singleService?.Day}<br/>Days Nights</span></p>
                         </div>
                         
                             {/* part-1-end */}
