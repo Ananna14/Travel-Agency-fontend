@@ -13,7 +13,7 @@ const Details = () => {
     const { user } = useAuth();
 
     useEffect(()=>{
-        fetch(`http://localhost:5000/services/${_id}`)
+        fetch(`https://agile-peak-08182.herokuapp.com/services/${_id}`)
         .then(res => res.json())
         .then(data => setSingleService(data))
     },[])
@@ -25,7 +25,7 @@ const Details = () => {
 
         data.email = user.email;
         console.log(data);
-        fetch("http://localhost:5000/confirmOrder",{
+        fetch("https://agile-peak-08182.herokuapp.com/confirmOrder",{
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify(data),

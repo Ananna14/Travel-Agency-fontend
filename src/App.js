@@ -46,7 +46,7 @@ function App() {
          <Route path="/pay" element={<PrivateRoute><Pay/></PrivateRoute>}></Route>
          <Route path="/login" element={<Login/>}></Route>
          <Route path="/register" element={<Register/>}></Route>
-         <Route path="/myOrder" element={<MyOrder/>}></Route>
+         <Route path="/myOrder" element={<PrivateRoute><MyOrder/></PrivateRoute>}></Route>
           {/* ADMIN */}
          <Route path="/admin/" element={<PrivateRoute><AdminRoute><AdminDashbord/></AdminRoute></PrivateRoute>}>
           <Route path="makeAdmin" element={<AdminRoute><MakeAdmin/></AdminRoute>}/>

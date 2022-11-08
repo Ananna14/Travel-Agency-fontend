@@ -11,7 +11,7 @@ const ManageTravel = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/services')
+    axios.get('https://agile-peak-08182.herokuapp.com/services')
         .then(res => setHome(res.data))
         .then(() => setLoading(false))
         .catch(err => console.log(err))
@@ -20,7 +20,7 @@ const ManageTravel = () => {
 
  // BTN_DELETED_USER_SERVICE
 const handleDelete = id =>{
-  const url = `http://localhost:5000/services/${id}`
+  const url = `https://agile-peak-08182.herokuapp.com/services/${id}`
   fetch(url, {
     method: 'DELETE'
   })

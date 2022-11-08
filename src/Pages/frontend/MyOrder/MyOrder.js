@@ -15,7 +15,7 @@ const MyOrder = () => {
     useEffect( ()=>{
       // const url = (`https://morning-lowlands-93777.herokuapp.com/booking?email=${user.email}`)
       if(user.email){
-        const url = `http://localhost:5000/myOrders?email=${user.email}`
+        const url = `https://agile-peak-08182.herokuapp.com/myOrders?email=${user.email}`
       fetch (url)
       .then(res => res.json())
       // .then(data => setBookings(data));
@@ -32,7 +32,7 @@ const MyOrder = () => {
 
 // BTN_DELETED_USER_SERVICE
 const handleDelete = id =>{
-  const url = `http://localhost:5000/services/${id}`
+  const url = `https://agile-peak-08182.herokuapp.com/services/${id}`
   fetch(url, {
     method: 'DELETE'
   })

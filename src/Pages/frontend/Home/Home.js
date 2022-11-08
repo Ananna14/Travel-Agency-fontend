@@ -7,7 +7,7 @@ const Home = () => {
   const [homes, setHome] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/services')
+    fetch('https://agile-peak-08182.herokuapp.com/services')
         .then(res => res.json())
         .then(data => {
           setHome(data)

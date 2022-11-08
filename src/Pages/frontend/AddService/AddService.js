@@ -8,7 +8,7 @@ const AddService = () => {
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/services', data)
+        axios.post('https://agile-peak-08182.herokuapp.com/services', data)
         .then(res =>{
             console.log(res)
         })
